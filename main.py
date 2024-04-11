@@ -50,13 +50,13 @@ def play_morse_code(morse_code):
         elif char == '-':
             pygame.mixer.Sound.play(pygame.mixer.Sound("sound/long_beep.wav"))
             time.sleep(duration_long / 1000)
-        elif char == ' ':
+        elif char == ' ' or char == '/':
             time.sleep(duration_short / 1000)  # Pause between letters
 
 def main():
     is_on = True
     while is_on:
-        morse_or_text = input("Do you want to convert Morse code to text (Enter 'M2T') or text to Morse code (Enter 'T2M'), to Quit (Enter 'Q')? ").upper()
+        morse_or_text = input("To convert Morse code to text (Enter 'M2T'), or text to Morse code (Enter 'T2M'), to Generate Morse code sound (Enter 'S'), to Quit (Enter 'Q')? ").upper()
         if morse_or_text == "M2T":
             message    = input("What is your Morse Code? ")
             text = get_text(message)
@@ -79,8 +79,10 @@ def main():
 
         elif morse_or_text == "Q":
             is_on = False
-        else:
-            main()
+
+        elif morse_or_text == "S":
+            mcode = input("Enter Morse Code only use ('.' and '-'): ")
+            play_morse_code(mcode)
     
 
 
