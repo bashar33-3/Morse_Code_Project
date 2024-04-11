@@ -37,7 +37,7 @@ def get_text(code : str):
 def main():
     is_on = True
     while is_on:
-        morse_or_text = input("Do you want to convert Morse code to text (Enter 'M2T') or text to Morse code (Enter 'T2M'), to Quit ()? ").upper()
+        morse_or_text = input("Do you want to convert Morse code to text (Enter 'M2T') or text to Morse code (Enter 'T2M'), to Quit (Enter 'Q')? ").upper()
         if morse_or_text == "M2T":
             message    = input("What is your Morse Code? ")
             text = get_text(message)
@@ -46,6 +46,8 @@ def main():
             message    = input("What is your text message? ")
             morse_code = get_code(message)
             print(f"Morse Code: {morse_code}")
+        elif morse_or_text == "Q":
+            is_on = False
         else:
             main()
     
